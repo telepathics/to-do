@@ -3,6 +3,7 @@ sys.dont_write_bytecode = True
 
 import psycopg2
 import psycopg2.extras
+import urllib.parse
 import random
 import string
 
