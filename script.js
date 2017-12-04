@@ -30,40 +30,40 @@ function getUserData() {
         method: "GET",
         credentials: "include"
     }).then(function (response) {
-        return response.json();
-    }).then(function (data) {
+        if (response.status === 200) {
+            let data = response.json();
+            userID = data.UID;
+            userFName = data.first_name;
+            userLName = data.last_name;
+            userEmail = data.email;
+            userImage = data.image;
 
-        userID = data.UID;
-        userFName = data.first_name;
-        userLName = data.last_name;
-        userEmail = data.email;
-        userImage = data.image;
+            let userFNameLocs = document.querySelectorAll(".userFName");
 
-        let userFNameLocs = document.querySelectorAll(".userFName");
-
-        let fNameFiller;
-        for (fNameFiller = 0; fNameFiller < userFNameLocs.length; fNameFiller += 1) {
-            userFNameLocs[fNameFiller].innerText = userFName;
-        }
-        let userImageLocs;
-        if (userImage !== undefined) {
-            let usrImgFiller;
-            userImageLocs = document.querySelectorAll(".user-icon");
-            for (usrImgFiller = 0; usrImgFiller < userImageLocs.length; usrImgFiller += 1) {
-                userImageLocs[usrImgFiller].src = userImage;
-                userImageLocs[usrImgFiller].alt = `${userFName} icon image`;
+            let fNameFiller;
+            for (fNameFiller = 0; fNameFiller < userFNameLocs.length; fNameFiller += 1) {
+                userFNameLocs[fNameFiller].innerText = userFName;
             }
-        } else {
-            let defaultImgFiller;
-            userImageLocs = document.querySelectorAll(".user-icon");
-            for (defaultImgFiller = 0; defaultImgFiller < userImageLocs.length; defaultImgFiller += 1) {
-                userImageLocs[defaultImgFiller].src = "./imgs/default-icon.jpg";
-                userImageLocs[defaultImgFiller].alt = `${userFName} icon image`;
+            let userImageLocs;
+            if (userImage !== undefined) {
+                let usrImgFiller;
+                userImageLocs = document.querySelectorAll(".user-icon");
+                for (usrImgFiller = 0; usrImgFiller < userImageLocs.length; usrImgFiller += 1) {
+                    userImageLocs[usrImgFiller].src = userImage;
+                    userImageLocs[usrImgFiller].alt = `${userFName} icon image`;
+                }
+            } else {
+                let defaultImgFiller;
+                userImageLocs = document.querySelectorAll(".user-icon");
+                for (defaultImgFiller = 0; defaultImgFiller < userImageLocs.length; defaultImgFiller += 1) {
+                    userImageLocs[defaultImgFiller].src = "./imgs/default-icon.jpg";
+                    userImageLocs[defaultImgFiller].alt = `${userFName} icon image`;
+                }
             }
-        }
 
-        document.getElementById("updateFName").value = userFName;
-        document.getElementById("updateLName").value = userLName;
+            document.getElementById("updateFName").value = userFName;
+            document.getElementById("updateLName").value = userLName;
+        }
     });
 }
 
@@ -341,7 +341,7 @@ function checkSession() {
             showTaskPage();
         }
         tinyCareScript();
-        return response.json();
+        return;
     });
 }
 

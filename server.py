@@ -24,7 +24,7 @@ class Handler(BaseHTTPRequestHandler):
 
 	def end_headers(self):
 		self.sendCookie()
-		self.send_header("Access-Control-Allow-Origin", "https://maryn.xyz")
+		self.send_header("Access-Control-Allow-Origin", self.headers['Origin'])
 		self.send_header("Access-Control-Allow-Headers", "Content-Type, Content-Length")
 		self.send_header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 		self.send_header("Access-Control-Allow-Credentials", "true")
