@@ -1,5 +1,5 @@
 "use strict";
-let apiURL = "http://localhost:8080"
+let apiURL = "https://web-to-do.herokuapp.com/"
 
 let toDoList = [];
 let toDoneList = [];

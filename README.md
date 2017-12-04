@@ -29,7 +29,7 @@ Steps
 `$ heroku logs`
 
 ### Update your client application:
-- [ ] &nbsp; Anywhere you previously opened a request to your server application via http://localhost... in your client application, modify your code to use your deployed server application. Be sure to use https. It isn’t necessary to specify a port number for your Heroku server. It is a good idea to refactor your code to use a BASE_URL constant value for the base URL (everything that precedes the path), so that it’s easy to switch between your deployed server and your local server for development purposes.
+- [x] &nbsp; Anywhere you previously opened a request to your server application via http://localhost... in your client application, modify your code to use your deployed server application. Be sure to use https. It isn’t necessary to specify a port number for your Heroku server. It is a good idea to refactor your code to use a BASE_URL constant value for the base URL (everything that precedes the path), so that it’s easy to switch between your deployed server and your local server for development purposes.
 `https://squirreltown.herokuapp.com/`
 
 ## Resources
