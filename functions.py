@@ -55,8 +55,8 @@ class DB:
 	def __init__(self):
 		# self.connection = sqlite3.connect("auth.db")
 
-        urllib.parse.uses_netloc.append("postgres")
-        url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
+		urllib.parse.uses_netloc.append("postgres")
+		url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
 
 		self.connection = psycopg2.connect(
 			cursor_factory=psycopg2.extras.RealDictCursor,
