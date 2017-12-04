@@ -336,7 +336,7 @@ def main():
 	if len(sys.argv) > 1:
 		port = int(sys.argv[1])
 
-	listen = ("127.0.0.1", $1)
+	listen = ("0.0.0.0", port)
 	server = HTTPServer(listen, Handler)
 	print("Server listening on", "{}:{}".format(*listen))
 	server.serve_forever()

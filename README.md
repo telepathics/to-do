@@ -9,23 +9,23 @@ Steps
 - [x] &nbsp; Add a `requirements.txt` text file which lists all Python modules, and their versions, required by your server application. Note that the format and syntax of this file must be exact.
 - [x] &nbsp; Add a `runtime.txt` text file which indicates the Python version that should be used to run your server application. Again, the format of this file must be exact.
 - [x] &nbsp; Enable your server application to listen on the HTTP port as specified by a command-line argument (in order to support the `Procfile` mechanism described above).
-- [?] &nbsp; Add support for PostgreSQL to your server application, using the `psycopg2` Python module. You will need to make modifications to your code that connects to the database, as well as very minor modifications to your various SQL statements. It should not be necessary to install or use PostgreSQL on your local computer, as the necessary changes should be minor enough to not require testing prior to deployment, but you may test locally if you wish.
+- [x] &nbsp; Add support for PostgreSQL to your server application, using the `psycopg2` Python module. You will need to make modifications to your code that connects to the database, as well as very minor modifications to your various SQL statements. It should not be necessary to install or use PostgreSQL on your local computer, as the necessary changes should be minor enough to not require testing prior to deployment, but you may test locally if you wish.
 - [x] &nbsp; Because you will no longer have direct access to your database to run SQL commands manually, is important to add code to your server application (if you haven’t already) that will attempt to create any necessary database tables (if they do not exist) when your server first runs. The SQL command below may be useful.
 `CREATE TABLE IF NOT EXISTS table_name (...)`
 
 ### Deploy your server application to Heroku:
-- [ ] &nbsp; Initialize a Git repository (if you haven’t yet) and commit all of your changes to be deployed. Important: be sure that the root of your Git repository contains your Python server script as well as all of the files described above (without any of these files contained within subdirectories), or else the deployment will fail.
-- [ ] &nbsp; Create a new Heroku application (Heroku account and Heroku CLI required). Run this command (and subsequent commands) from the root of your Git repository:
+- [x] &nbsp; Initialize a Git repository (if you haven’t yet) and commit all of your changes to be deployed. Important: be sure that the root of your Git repository contains your Python server script as well as all of the files described above (without any of these files contained within subdirectories), or else the deployment will fail.
+- [x] &nbsp; Create a new Heroku application (Heroku account and Heroku CLI required). Run this command (and subsequent commands) from the root of your Git repository:
 `$ heroku create`
-- [ ] &nbsp; [Optional] Rename your Heroku application:
+- [x] &nbsp; [Optional] Rename your Heroku application:
 `$ heroku rename my-awesome-app`
-- [ ] &nbsp; Provision a Postgres database and attach it to your Heroku application:
+- [x] &nbsp; Provision a Postgres database and attach it to your Heroku application:
 `$ heroku addons:create heroku-postgresql:hobby-dev`
-- [ ] &nbsp; Push your code to Heroku (this may be repeated as additional changes are committed to your repository):
+- [x] &nbsp; Push your code to Heroku (this may be repeated as additional changes are committed to your repository):
 `$ git push heroku master`
-- [ ] &nbsp; Launch your deployed application in a web browser:
+- [x] &nbsp; Launch your deployed application in a web browser:
 `$ heroku open`
-- [ ] &nbsp; If you encounter an error, inspect the Heroku logs to determine the cause:
+- [x] &nbsp; If you encounter an error, inspect the Heroku logs to determine the cause:
 `$ heroku logs`
 
 ### Update your client application:
