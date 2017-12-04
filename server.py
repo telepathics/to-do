@@ -12,6 +12,9 @@ import bcrypt as cryptb
 from functions import *
 
 
+gSessionStore = SessionStore()
+
+
 
 
 
@@ -326,8 +329,6 @@ class Handler(BaseHTTPRequestHandler):
 # >>>>>>>>>>>>>>>> START RUNNING SERVER <<<<<<<<<<<<<<<<
 
 def main():
-
-	gSessionStore = SessionStore()
 	db = DB()
 	db.createTables()
 	db = None # disconnect
