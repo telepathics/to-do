@@ -25,7 +25,7 @@ class Handler(BaseHTTPRequestHandler):
 	def end_headers(self):
 		self.sendCookie()
 		self.send_header("Access-Control-Allow-Origin", self.headers['Origin'])
-		self.send_header("Access-Control-Allow-Headers", "Content-Type, Content-Length")
+		self.send_header("Access-Control-Allow-Headers", "Content-Type")
 		self.send_header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 		self.send_header("Access-Control-Allow-Credentials", "true")
 		BaseHTTPRequestHandler.end_headers(self)
@@ -123,6 +123,8 @@ class Handler(BaseHTTPRequestHandler):
 
 	def do_OPTIONS(self):
 		self.send_response(200)
+		self.send_header('Content-Length',0)
+		self.send_header('Connection','close')
 		self.end_headers()
 
 
