@@ -213,6 +213,7 @@ class Handler(BaseHTTPRequestHandler):
 			self.session["UID"] = user["UID"]
 
 			self.send_response(200)
+			self.send_header("Content-Type", "application/json")
 			self.end_headers()
 
 		# REGISTRATION
@@ -241,6 +242,7 @@ class Handler(BaseHTTPRequestHandler):
 			self.session["UID"] = user['UID']
 
 			self.send_response(201)
+			self.send_header("Content-Type", "application/json")
 			self.end_headers()
 
 		# ADD NEW TASK
@@ -266,6 +268,7 @@ class Handler(BaseHTTPRequestHandler):
 				return
 
 			self.send_response(201)
+			self.send_header("Content-Type", "application/json")
 			self.end_headers()
 
 		else:
@@ -288,6 +291,7 @@ class Handler(BaseHTTPRequestHandler):
 			db.completeTask(task["TID"])
 
 			self.send_response(200)
+			self.send_header("Content-Type", "application/json")
 			self.end_headers()
 
 		# UPDATE PROFILE
@@ -300,6 +304,7 @@ class Handler(BaseHTTPRequestHandler):
 
 			db.updateProfile(self.session["UID"], body)
 			self.send_response(200)
+			self.send_header("Content-Type", "application/json")
 			self.end_headers()
 
 		else:
@@ -316,6 +321,7 @@ class Handler(BaseHTTPRequestHandler):
 				return
 
 			self.send_response(200)
+			self.send_header("Content-Type", "application/json")
 			self.end_headers()
 
 			self.session = {}
