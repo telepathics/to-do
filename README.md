@@ -5,12 +5,12 @@ Deploy your Python server application to the cloud using Heroku. Prepare your ap
 Steps
 
 ### Prepare your server application for deployment:
-- [ ] &nbsp; Add a `Procfile` that describes how your application should be started, using Python, and which port number your server should listen on, using a command-line argument to your Python script and the `$PORT` environment variable.
-- [ ] &nbsp; Add a `requirements.txt` text file which lists all Python modules, and their versions, required by your server application. Note that the format and syntax of this file must be exact.
-- [ ] &nbsp; Add a `runtime.txt` text file which indicates the Python version that should be used to run your server application. Again, the format of this file must be exact.
-- [ ] &nbsp; Enable your server application to listen on the HTTP port as specified by a command-line argument (in order to support the `Procfile` mechanism described above).
-- [ ] &nbsp; Add support for PostgreSQL to your server application, using the `psycopg2` Python module. You will need to make modifications to your code that connects to the database, as well as very minor modifications to your various SQL statements. It should not be necessary to install or use PostgreSQL on your local computer, as the necessary changes should be minor enough to not require testing prior to deployment, but you may test locally if you wish.
-- [ ] &nbsp; Because you will no longer have direct access to your database to run SQL commands manually, is important to add code to your server application (if you haven’t already) that will attempt to create any necessary database tables (if they do not exist) when your server first runs. The SQL command below may be useful.
+- [x] &nbsp; Add a `Procfile` that describes how your application should be started, using Python, and which port number your server should listen on, using a command-line argument to your Python script and the `$PORT` environment variable.
+- [x] &nbsp; Add a `requirements.txt` text file which lists all Python modules, and their versions, required by your server application. Note that the format and syntax of this file must be exact.
+- [x] &nbsp; Add a `runtime.txt` text file which indicates the Python version that should be used to run your server application. Again, the format of this file must be exact.
+- [x] &nbsp; Enable your server application to listen on the HTTP port as specified by a command-line argument (in order to support the `Procfile` mechanism described above).
+- [?] &nbsp; Add support for PostgreSQL to your server application, using the `psycopg2` Python module. You will need to make modifications to your code that connects to the database, as well as very minor modifications to your various SQL statements. It should not be necessary to install or use PostgreSQL on your local computer, as the necessary changes should be minor enough to not require testing prior to deployment, but you may test locally if you wish.
+- [x] &nbsp; Because you will no longer have direct access to your database to run SQL commands manually, is important to add code to your server application (if you haven’t already) that will attempt to create any necessary database tables (if they do not exist) when your server first runs. The SQL command below may be useful.
 `CREATE TABLE IF NOT EXISTS table_name (...)`
 
 ### Deploy your server application to Heroku:

@@ -1,0 +1,27 @@
+#profile-page {
+	width: 45%;
+	height: 100%;
+}
+
+#profile {
+	margin-top: 45px;
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+
+	color: rgb(255, 255, 255);
+}
+
+#profile img {
+	width: 238px;
+	height: 238px;
+}
+
+#profile input[type="text"] {
+	text-align: center;
+	font-size: 25px;
+}

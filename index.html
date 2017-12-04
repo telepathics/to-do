@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Web To Do</title>
+	<link rel="stylesheet" href="./style.css">
+</head>
+<body>	
+
+
+	<div id="auth-page" class="wrapper">
+		<div id="register-page" class="wrapper">
+			<div class="header">
+				<h1>Register</h1>
+			</div>
+
+			<form id="register">
+				<div class="formitem"><input placeholder="First Name" type="text" id="regFirstName" /></div>
+				<div class="formitem"><input placeholder="Last Name" type="text" id="regLastName" /></div>
+				<div class="formitem"><input placeholder="your@email.com" id="regEmail" type="email" /></div>
+				<div class="formitem"><input placeholder="***************" type="password" id="regPassword" /></div>
+				<div class="btn" onclick="addNewUser();">Sign Up</div>
+				<p class="emailInUse">This email is in use. Did you mean to log in?</p>
+				<p class="missingFormItems">Hmmm... Missing something?</p>
+			</form>
+		</div>
+
+		<div id="login-page" class="wrapper">
+			<div class="header">
+				<h1>Login</h1>
+			</div>
+			<form id="login">
+				<div class="formitem"><input type="email" placeholder="your@email.com" id="logEmail"></div>
+				<div class="formitem"><input type="password" placeholder="***************" id="logPassword"></div>
+				<div class="btn" onclick="loginUser();">Login</div>
+				<p class="missingFormItems">Hmmm... Missing something?</p>
+				<p class="somethingWrong">Something's not right here...</p>
+			</form>
+		</div>
+	</div>
+
+	<div id="side-bar">
+		<div id="profile-widget" class="widget">
+			<img class="user-icon" src="./imgs/default-icon.jpg" alt="user icon"/>
+			<h3 class="widget-header">Hello, <span class="userFName"></span>!</h3>
+			<hr />
+			<table>
+				<tr>
+					<td id="inprogress" class="tc-number">0</th>
+					<td class="task-counter">tasks in progress</td>
+				</tr>
+				<tr>
+					<td id="completedtasks" class="tc-number">0</th>
+					<td class="task-counter">tasks completed</td>
+				</tr>
+			</table>
+		</div>
+		<div id="settings-widget" class="widget">
+			<h3 class="widget-header">Settings</h3>
+			<hr />
+			<ul class="widget-description">
+				<li onclick="showProfilePage();"><img src="imgs/user.svg" />Profile</li>
+				<a href="#"><li><img src="imgs/cog.svg" />Account</li></a>
+				<a href="#"><li><img src="imgs/heart.svg" />I Love Wes</li></a>
+				<li onclick="logoutUser();"><img src="imgs/power.svg" />Log Out</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="task-page" class="wrapper">
+		<div class="header">
+			<h1>To Do</h1>
+			<hr />
+			<div id="add-task">
+				<input type="text" id="new-task" />
+				<input type="image" value="submit" src="imgs/plus-circle.svg" onclick="addNewTask();" />
+			</div>
+		</div>
+		
+		<div id="tasks">
+			<div id="inboxZero">
+				<span id="allDone"></span>
+				<span style="height:10px;"></span>
+				<span id="tiny-care"></span>
+			</div>
+			<ul id="tasks-list" class="tasks">
+				<!-- ## SAMPLE TASK ##
+				<li class="task" id="litask12">
+					<input id="task12" type="checkbox">
+					<label for="task12">
+						<span></span>
+						Test 1
+					</label>
+				</li>
+				-->
+			</ul>
+		</div>
+	</div>
+
+	<div id="profile-page" class="wrapper">
+		<div class="header">
+			<h1>Update Profile</h1>
+			<hr>
+			<li style="list-decoration: none; margin:0; padding:0;"onclick="showTaskPage();">go back</li>
+		</div>
+		<div id="profile">
+			<img id="image" src="./imgs/default-icon.jpg" alt="user icon" class="user-icon" /><br>
+			<input type="file" onchange="readURL(this);" name="image" accept="image/*">
+
+			<div style="padding: 20px 0"></div>
+			<input id="updateFName" type="text" class="userFName">
+
+			<div style="padding: 10px 0"></div>
+			<input id="updateLName" type="text" class="userLName">
+
+			<div class="btn" onclick="updateProfile();">update</div>
+		</div>
+
+	</div>
+
+	<script src="./script.js"></script>
+</body>
+</html>

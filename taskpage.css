@@ -1,0 +1,83 @@
+/* TASK PAGE */
+
+#task-page {
+	width: 45%;
+	height: 100%;
+}
+
+#task-page #add-task {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+}
+
+#task-page .header img {
+	width: 20px;
+	height: 20px;
+	margin-left: 1%;
+}
+
+#task-page .header hr {
+	margin-bottom: 2%;
+}
+
+#task-page #tasks {
+	padding: 5%;
+	height: 560px;
+	overflow-y: scroll;
+}
+
+#task-page #tasks li {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-content: center;
+	align-items: center;
+
+	border-bottom: 1px dotted rgba(120, 120, 120, .3);
+
+	padding: 2.5% 1.2%;
+}
+
+#task-page label {
+	color: rgb(175, 175, 175);
+	font-family: 'Roboto', sans-serif;
+	font-size: 400;
+
+	-webkit-user-select: none;
+ 	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	
+	width: 100%;
+	margin-left: 5%;
+
+	transition: ease-in-out all 0.2s;
+}
+
+#task-page #tasks img {
+	width: 30px;
+}
+
+#task-page #tasks .task {
+	padding-bottom: 1.5%;
+}
+
+#inboxZero {
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+
+	margin: 35% 0 0 0;
+
+	color: rgb(175, 175, 175);
+	font-family: 'Roboto', sans-serif;
+	font-size: 400;
+
+	transition: 0.5s opacity;
+	opacity: 0; /* so it fades in on page load */
+}

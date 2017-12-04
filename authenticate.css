@@ -1,0 +1,49 @@
+/* AUTHENTICATION PAGE */
+
+#auth-page {
+	width: 70%;
+	height: 60%;
+
+	position: absolute;
+	z-index: 1;
+
+	display: flex;
+	flex-direction: row;
+
+	color: rgb(175, 175, 175);
+	font-family: 'Roboto', sans-serif;
+	font-size: 300;
+}
+
+#register-page, #login-page {
+	width: 50%;
+	
+	opacity: 0.5;
+	transition: ease-in-out all 0.2s;
+}
+
+#register-page:hover, #login-page:hover {
+	opacity: 1;
+}
+
+#register {
+	margin-top: 25px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+
+	border-right: 2px solid rgb(60, 60, 60);
+}
+
+#login {
+	margin-top: 25px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+}
