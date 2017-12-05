@@ -126,13 +126,13 @@ class DB:
 
 	def retrieveTasks(self, UID):
 		# tasks = []
-		self.cursor.execute("SELECT * FROM tasks WHERE UID = %s", (UID, )):
+		self.cursor.execute("SELECT * FROM tasks WHERE UID = %s", (UID, ))
 		# tasks.append({"TID": row['TID'], "task_name": row['task_name'], "description": row['description'], "UID": int(row['UID']), "completed": bool(row['completed'])})
 
 		return self.cursor.fetchall()
 
 	def retrieveTaskByID(self, TID):
-		self.cursor.execute("SELECT * FROM tasks WHERE TID = %s", (TID, )):
+		self.cursor.execute("SELECT * FROM tasks WHERE TID = %s", (TID, ))
 		# return ({"TID": int(row['TID']), "task_name": row['task_name'], "description": row['description'], "UID": int(row['UID']), "completed": bool(int(row['completed']))})
 
 		return self.cursor.fetchone()
