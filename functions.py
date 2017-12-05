@@ -119,24 +119,23 @@ class DB:
 	# ---------------- RETRIEVE ----------------
 
 	def retrieveUserByEmail(self, email):
-		for row in self.cursor.execute("SELECT * FROM users WHERE email = %s", (email, )):
+		self.cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
+		# return {"UID": row['UID'], "email": row['email'], "first_name": row['first_name'], "last_name": row['last_name'], "encrypted_password": row['encrypted_password'], "image": row['image']}
 
-			return {"UID": row['UID'], "email": row['email'], "first_name": row['first_name'], "last_name": row['last_name'], "encrypted_password": row['encrypted_password'], "image": row['image']}
-
-		return None
+		return self.cursor.fetchone()
 
 	def retrieveTasks(self, UID):
-		tasks = []
-		for row in self.cursor.execute("SELECT * FROM tasks WHERE UID = %s", (UID, )):
-			tasks.append({"TID": row['TID'], "task_name": row['task_name'], "description": row['description'], "UID": int(row['UID']), "completed": bool(row['completed'])})
+		# tasks = []
+		self.cursor.execute("SELECT * FROM tasks WHERE UID = %s", (UID, )):
+		# tasks.append({"TID": row['TID'], "task_name": row['task_name'], "description": row['description'], "UID": int(row['UID']), "completed": bool(row['completed'])})
 
-		return tasks
+		return self.cursor.fetchall()
 
 	def retrieveTaskByID(self, TID):
-		for row in self.cursor.execute("SELECT * FROM tasks WHERE TID = %s", (TID, )):
-			return ({"TID": int(row['TID']), "task_name": row['task_name'], "description": row['description'], "UID": int(row['UID']), "completed": bool(int(row['completed']))})
+		self.cursor.execute("SELECT * FROM tasks WHERE TID = %s", (TID, )):
+		# return ({"TID": int(row['TID']), "task_name": row['task_name'], "description": row['description'], "UID": int(row['UID']), "completed": bool(int(row['completed']))})
 
-		return None
+		return self.cursor.fetchone()
 
 
 	# ---------------- UPDATE ----------------
