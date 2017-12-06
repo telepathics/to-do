@@ -132,7 +132,7 @@ class DB:
 		return self.cursor.fetchall()
 
 	def retrieveTaskByID(self, TID):
-		self.cursor.execute("SELECT * FROM tasks WHERE TID = %s", (TID, ))
+		self.cursor.execute("SELECT * FROM tasks WHERE tid = %s", (TID, ))
 		# return ({"TID": int(row['TID']), "task_name": row['task_name'], "description": row['description'], "UID": int(row['UID']), "completed": bool(int(row['completed']))})
 
 		return self.cursor.fetchone()
@@ -144,9 +144,13 @@ class DB:
 		if not self.retrieveTaskByID(TID):
 			return (404, "Task not found.")
 
-		self.cursor.execute("UPDATE tasks SET completed=? WHERE TID = %s", (True, TID))
+		self.cursor.execute("UPDATE tasks SET completed = %s WHERE tid = %s", (1, TID))
 		self.connection.commit()
 
+		return None
+
 	def updateProfile(self, UID, changes):
-		self.cursor.execute("UPDATE users SET image = %s, first_name = %s, last_name = %s WHERE UID = %s", (changes['image'], changes['first_name'], changes['last_name'], UID))
+		self.cursor.execute("UPDATE users SET image = %s, first_name = %s, last_name = %s WHERE id = %s", (changes['image'], changes['first_name'], changes['last_name'], UID))
 		self.connection.commit()
+
+		return None

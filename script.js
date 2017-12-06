@@ -31,39 +31,40 @@ function getUserData() {
         credentials: "include"
     }).then(function (response) {
         if (response.status === 200) {
-            let data = response.json();
-            userID = data.UID;
-            userFName = data.first_name;
-            userLName = data.last_name;
-            userEmail = data.email;
-            userImage = data.image;
-
-            let userFNameLocs = document.querySelectorAll(".userFName");
-
-            let fNameFiller;
-            for (fNameFiller = 0; fNameFiller < userFNameLocs.length; fNameFiller += 1) {
-                userFNameLocs[fNameFiller].innerText = userFName;
-            }
-            let userImageLocs;
-            if (userImage !== undefined) {
-                let usrImgFiller;
-                userImageLocs = document.querySelectorAll(".user-icon");
-                for (usrImgFiller = 0; usrImgFiller < userImageLocs.length; usrImgFiller += 1) {
-                    userImageLocs[usrImgFiller].src = userImage;
-                    userImageLocs[usrImgFiller].alt = `${userFName} icon image`;
-                }
-            } else {
-                let defaultImgFiller;
-                userImageLocs = document.querySelectorAll(".user-icon");
-                for (defaultImgFiller = 0; defaultImgFiller < userImageLocs.length; defaultImgFiller += 1) {
-                    userImageLocs[defaultImgFiller].src = "./imgs/default-icon.jpg";
-                    userImageLocs[defaultImgFiller].alt = `${userFName} icon image`;
-                }
-            }
-
-            document.getElementById("updateFName").value = userFName;
-            document.getElementById("updateLName").value = userLName;
+            return response.json();
         }
+    }).then(function (data) {
+        userID = data['UID'];
+        userFName = data.first_name;
+        userLName = data.last_name;
+        userEmail = data.email;
+        userImage = data.image;
+
+        let userFNameLocs = document.querySelectorAll(".userFName");
+
+        let fNameFiller;
+        for (fNameFiller = 0; fNameFiller < userFNameLocs.length; fNameFiller += 1) {
+            userFNameLocs[fNameFiller].innerText = userFName;
+        }
+        let userImageLocs;
+        if (userImage !== undefined) {
+            let usrImgFiller;
+            userImageLocs = document.querySelectorAll(".user-icon");
+            for (usrImgFiller = 0; usrImgFiller < userImageLocs.length; usrImgFiller += 1) {
+                userImageLocs[usrImgFiller].src = userImage;
+                userImageLocs[usrImgFiller].alt = `${userFName} icon image`;
+            }
+        } else {
+            let defaultImgFiller;
+            userImageLocs = document.querySelectorAll(".user-icon");
+            for (defaultImgFiller = 0; defaultImgFiller < userImageLocs.length; defaultImgFiller += 1) {
+                userImageLocs[defaultImgFiller].src = "./imgs/default-icon.jpg";
+                userImageLocs[defaultImgFiller].alt = `${userFName} icon image`;
+            }
+        }
+
+        document.getElementById("updateFName").value = userFName;
+        document.getElementById("updateLName").value = userLName;
     });
 }
 
@@ -85,7 +86,7 @@ function updateTaskCounts() {
 function tinyCareScript() {
     "use strict";
     let careRepo = ["remember to drink some water!", "say hello to an old friend!", "nap time!", "smile a little :)", "listen to music that makes you feel good!", "remember to eat something, please!", "take a walk, you deserve it!", "try to find time to do something creative!"];
-    if (taskslist.childNodes.length === 3) {
+    if (taskslist.childNodes.length === 1) {
         document.querySelector("#inboxZero").style.display = "flex";
 
         document.querySelector("#allDone").innerHTML = "💗&nbsp; Looks like you're all done for now 💗 <br/>";
@@ -163,11 +164,11 @@ function getTasks() {
 
         let taskFiller;
         for (taskFiller = 0; taskFiller < body.length; taskFiller += 1) {
-            if (body[taskFiller].completed === false) {
-                toDoList.push(body[taskFiller].TID);
-                styleTask(body[taskFiller].TID, body[taskFiller].task_name);
+            if (body[taskFiller].completed === 0) {
+                toDoList.push(body[taskFiller].tid);
+                styleTask(body[taskFiller].tid, body[taskFiller].task_name);
             } else {
-                toDoneList.push(body[taskFiller].TID);
+                toDoneList.push(body[taskFiller].tid);
             }
         }
 

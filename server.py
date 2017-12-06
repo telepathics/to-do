@@ -81,6 +81,7 @@ class Handler(BaseHTTPRequestHandler):
 		except json.decoder.JSONDecodeError:
 			body = {}
 			return (422, {})
+
 		return (200, body)
 
 
@@ -144,9 +145,8 @@ class Handler(BaseHTTPRequestHandler):
 			self.wfile.write(json.dumps({
 				"email": user["email"],
 				"first_name": user["first_name"],
-				"last_name": user["last_name"],
-				"image": user["image"]
-				}).encode("utf-8"))
+				"last_name": user["last_name"]
+			}).encode("utf-8"))
 
 		# RETURN AUTHENTICATED USER INFORMATION
 		elif self.checkPath("/user"):
@@ -164,7 +164,6 @@ class Handler(BaseHTTPRequestHandler):
 				"email": user["email"],
 				"first_name": user["first_name"],
 				"last_name": user["last_name"],
-				"image": user["image"],
 				"UID": self.session["UID"]
 			}).encode("utf-8"))
 
@@ -214,7 +213,7 @@ class Handler(BaseHTTPRequestHandler):
 				return
 
 			self.session["email"] = body["email"]
-			self.session["UID"] = user["UID"]
+			self.session["UID"] = user["id"]
 
 			self.send_response(200)
 			self.send_header("Content-Type", "application/json")
@@ -243,7 +242,7 @@ class Handler(BaseHTTPRequestHandler):
 			user = db.retrieveUserByEmail(body['email'])
 
 			self.session["email"] = body['email']
-			self.session["UID"] = user['UID']
+			self.session["UID"] = user['id']
 
 			self.send_response(201)
 			self.send_header("Content-Type", "application/json")
@@ -290,11 +289,12 @@ class Handler(BaseHTTPRequestHandler):
 				return
 
 			task = db.retrieveTaskByID(self.url_vars["TID"])
-			if not task or task["UID"] != self.session["UID"]:
+			print(task["uid"], task["tid"])
+			if not task or task["uid"] != self.session["UID"]:
 				self.sendError(404, "Task not found under given ID.")
 				return
 
-			db.completeTask(task["TID"])
+			db.completeTask(task["tid"])
 
 			self.send_response(200)
 			self.send_header("Content-Type", "application/json")
